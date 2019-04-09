@@ -1,0 +1,181 @@
+{% load static %}
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Happy Home</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+
+<!---->
+<!--  Base HTML Links  -->
+<!---->
+  <!-- Favicons -->
+  <link href="{% static 'base/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'base/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{% static 'base/lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{% static 'base/lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'base/lib/animate/animate.min.css' %}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{% static 'base/css/style.css' %}" rel="stylesheet">
+
+
+<!---->
+<!--Registration Form HTML Links-->
+<!---->
+    <!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'registration/images/icons/favicon.ico' %}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'registration/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registration/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registration/fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registration/vendor/animate/animate.css' %}">
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registration/vendor/css-hamburgers/hamburgers.min.css' %}">
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registration/vendor/animsition/css/animsition.min.css' %}">
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registration/vendor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registration/vendor/daterangepicker/daterangepicker.css' %}">
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'registration/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'registration/css/main.css' %}">
+    <!--===============================================================================================-->
+
+
+
+<!---->
+<!--Login Form HTML Links-->
+<!---->
+    <!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'login/images/icons/favicon.ico' %}"/>
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/animate/animate.css' %}">
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/css-hamburgers/hamburgers.min.css' %}">
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/animsition/css/animsition.min.css' %}">
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor/daterangepicker/daterangepicker.css' %}">
+    <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/css/main_login.css' %}">
+
+
+  <!-- =======================================================
+    Theme Name: Regna
+    Theme URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+
+<body bgcolor="#343b40">
+
+ {% include "header.html" %}
+
+
+  <main id="main">
+
+
+    {% block content %}
+      {% endblock %}
+
+
+
+  </main>
+
+  {% include "footer.html" %}
+
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+
+ <!---->
+<!--  Base Scripting Links  -->
+<!---->
+  <!-- JavaScript Libraries -->
+  <script src="{% static 'base/lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'base/lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'base/lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'base/lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'base/lib/wow/wow.min.js' %}"></script>
+  <script src="{% static 'base/lib/waypoints/waypoints.min.js' %}"></script>
+  <script src="{% static 'base/lib/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'base/lib/superfish/hoverIntent.js' %}"></script>
+  <script src="{% static 'base/lib/superfish/superfish.min.js' %}"></script>
+
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static 'base/contactform/contactform.js' %}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static 'base/js/main.js' %}"></script>
+
+
+
+<!---->
+<!--Registration Form Scripting Links-->
+<!---->
+<!--===============================================================================================-->
+	<script src="{% static 'registration/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'registration/vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'registration/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'registration/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'registration/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'registration/vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'registration/vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'registration/vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'registration/js/main.js' %}"></script>
+
+
+<!---->
+<!--Login Form Scripting Links-->
+<!---->
+
+<!--===============================================================================================-->
+	<script src="{% static 'login/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'login/vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'login/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'login/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'login/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'login/vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'login/vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'login/vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'login/js/main.js' %}"></script>
+
+</body>
+</html>

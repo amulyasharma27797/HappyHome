@@ -1,0 +1,25 @@
+{% load static %}
+<!--==========================
+  Header
+  ============================-->
+  <header id="header">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+        <a href="{% url 'home' %}"><img src="{% static 'base/img/happy_home.png' %}"
+										width="250px" height="50px" alt="Happy Home" title="" /></img></a>
+        <!-- Uncomment below if you prefer to use a text logo -->
+        <!--<h1><a href="#hero">Regna</a></h1>-->
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About Us</a></li>
+          <li><a href="{% url 'contact' %}">Contact Us</a></li>
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'new_user_registration' %}">Register</a></li>
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- #header -->

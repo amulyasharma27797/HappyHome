@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% load static %}
+  <!--==========================
+    Hero Section
+  ============================-->
+  <section id="hero">
+    <div class="hero-container">
+      <h1>Welcome to Happy Home</h1>
+      <h2>Find your perfect place</h2>
+      <a href="{% url 'login' %}" class="btn-get-started">Get Started</a>
+    </div>
+  </section><!-- #hero -->
+
+{% endblock %}

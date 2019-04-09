@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+
+{% block start_banner_area %}
+<!--	<section class="banner-area relative" id="home">-->
+<!--		<div class="overlay overlay-bg"></div>-->
+<!--		<div class="container">-->
+<!--			<div class="row d-flex text-center align-items-center justify-content-center">-->
+<!--				<div class="about-content col-lg-12">-->
+<!--					<p class="text-white link-nav"><a href="{% url 'home' %}">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="{% url 'logout' %}">-->
+<!--							Logout</a></p>-->
+<!--					<h1 class="text-white">-->
+<!--						Logout-->
+<!--					</h1>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</section>-->
+{% endblock %}
+
+
+
+
+{% block start_property_area %}
+	<section class="property-area section-gap relative" id="property">
+
+        <h1 align="center">Logged out successfully!</h1>
+            <a href="{% url 'login' %}">
+                <div align="center">NEED TO LOGIN AGAIN!!!</div>
+            </a>
+                <br><div align="center">OR</div><br>
+            <a href="{% url  'home' %}">
+                <div align="center">Go to Home</div>
+            </a>
+
+{% endblock %}
+
+{% block start_about_area %}
+<!--	<section class="about-area">-->
+	{% endblock %}
+
+	{% block start_city_area %}
+<!--	<section class="city-area section-gap"></section>-->
+	{% endblock %}
+
+	{% block start_testimonial_area %}
+<!--	<section class="testomial-area section-gap">-->
+	{% endblock %}
+
+	{% block start_blog_area %}
+<!--	<section class="blog-area section-gap"></section>-->
+	{% endblock %}
