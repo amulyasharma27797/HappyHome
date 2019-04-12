@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- start banner Area -->
+	<section class="banner-area relative" id="home">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex text-center align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<p class="text-white link-nav"><a href="{% url 'home' %}">Home </a>
+						<span class="lnr lnr-arrow-right"></span> <a href="{% url 'property_view' %}">
+							Your Properties</a></p>
+					<h1 class="text-white">
+						Your Properties
+					</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+<br>
+
+	<!-- Start property Area -->
+	<section class="property-area section-gap relative" id="property">
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="col-md-10 header-text">
+					<h1>Details of Current Property</h1>
+					<p>
+                        <!---->
+					</p>
+				</div>
+			</div>
+<br>
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="single-property">
+						<div class="images">
+							<img class="img-fluid mx-auto d-block" src="{{properties.main_image.url}}" alt="">
+<!--                            <span>For Sale</span>-->
+							</div>
+								<h4>{{properties.title}}</a></h4>
+								<h4>{{properties.price}}</h4><br>
+								<p>Posted By: {{properties.posted_by}}</p>
+								<p>Address: {{properties.address}}</p>
+								<p>City: {{properties.city}}</p>
+								<p>State: {{properties.state}}</p>
+								<p>Pin: {{properties.pin}}</p>
+								<p>Bedroom: {{properties.bedroom}}</p>
+								<p>Bathroom: {{properties.bathroom}}</p>
+								<p>Square Feet: {{properties.sq_feet}}</p>
+								<p>Lot Size: {{properties.lot_size}}</p>
+								<p>Garage: {{properties.garage}}</p>
+								<p>Listing Date: {{properties.property_listing_date}}</p>
+								<p>Description: {{properties.description}}</p>
+							</div>
+                		</div>
+					</div>
+				</div>
+			</div>
+	</section>
+	<!-- End property Area -->
+
+
+{% endblock %}

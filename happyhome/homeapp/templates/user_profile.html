@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+	{% load static %}
+	{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+
+
+
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'user/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'user/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'user/fonts/iconic/css/material-design-iconic-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'user/vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'user/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'user/css/main.css' %}">
+<!--===============================================================================================-->
+
+
+	<form method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<div class="container-contact100">
+			<div class="wrap-contact100">
+				<span class="contact100-form-title">
+						User Details
+					</span>
+
+				<img src="{{user.photo.url}}" alt="My Image" width="70px" height="80px" style="'border-radius:50%;">
+				<form class="contact100-form validate-form">
+
+						{{update | crispy}}
+
+					<div class="container-contact100-form-btn">
+						<button class="contact100-form-btn">
+							<span>
+								Update
+								<i class="zmdi zmdi-arrow-right m-l-8"></i>
+							</span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</form>
+
+
+<!--===============================================================================================-->
+	<script src="{% static 'user/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'user/vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'user/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'user/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+
+{% endblock %}

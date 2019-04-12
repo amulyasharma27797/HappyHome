@@ -1,12 +1,14 @@
 {% extends "base.html" %}
-
-{% block start_banner_area %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
 	<section class="banner-area relative" id="home">
 		<div class="overlay overlay-bg"></div>
 		<div class="container">
 			<div class="row d-flex text-center align-items-center justify-content-center">
 				<div class="about-content col-lg-12">
-					<p class="text-white link-nav"><a href="{% url 'home' %}">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="{% url 'login' %}">
+					<p class="text-white link-nav"><a href="{% url 'home' %}">Home </a>
+						<span class="lnr lnr-arrow-right"></span> <a href="{% url 'property_register' %}">
 							Register Property</a></p>
 					<h1 class="text-white">
 						Register Property
@@ -15,9 +17,9 @@
 			</div>
 		</div>
 	</section>
-{% endblock %}
 
-{% block start_property_area %}
+<br>
+
 	<link rel="stylesheet" type="text/css" href="{% static 'login/css/main_login.css' %}">
 	<section class="property-area section-gap relative" id="property">
 	<div class="limiter">
@@ -67,18 +69,3 @@
 	<script src="{% static 'login/js/main.js' %}"></script>
 {% endblock %}
 
-	{% block start_about_area %}
-<!--	<section class="about-area">-->
-	{% endblock %}
-
-	{% block start_city_area %}
-<!--	<section class="city-area section-gap"></section>-->
-	{% endblock %}
-
-	{% block start_testimonial_area %}
-<!--	<section class="testomial-area section-gap">-->
-	{% endblock %}
-
-	{% block start_blog_area %}
-<!--	<section class="blog-area section-gap"></section>-->
-	{% endblock %}

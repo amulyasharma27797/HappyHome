@@ -5,9 +5,41 @@
     <title>Title</title>
 </head>
 <body>
-In Test
+                        {% if user.is_authenticated %}
+							<li><a href="{% url 'logout' %}">Logout</a></li>
 
-{{ form.as_p }}
+								{% if user.is_seller %}
+									<li><a href="{% url 'user_profile' %}">{{ user }} (Seller) </a></li>
+									<li><a href="{% url 'property_register' %}">Post Property</a></li>
+									<li><a href="{% url 'property_view' %}">View Property</a></li>
+								{% else %}
+									<li><a href="{% url 'user_profile' %}">{{ user }} (Buyer)</a></li>
+								{% endif %}
+						{% else %}
+							<li><a href="{% url 'login' %}">Login</a></li>
+							<li><a href="{% url 'new_user_registration' %}">Register</a></li>
+						{% endif %}
 
+
+
+                        {% if user.is_seller %}
+                            {% if user.is_authenticated %}
+                                <li><a href="{% url 'user_profile' %}">{{ user }} (Seller) </a></li>
+								<li><a href="{% url 'property_register' %}">Post Property</a></li>
+								<li><a href="{% url 'property_view' %}">View Property</a></li>
+                                <li><a href="{% url 'logout' %}">Logout</a></li>
+                            {% else %}
+                                <li><a href="{% url 'login' %}">Login</a></li>
+							    <li><a href="{% url 'new_user_registration' %}">Register</a></li>
+                            {% endif %}
+                        {% else %}
+                            {% if user.is_authenticated %}
+                                <li><a href="{% url 'user_profile' %}">{{ user }} (Buyer)</a></li>
+                                <li><a href="{% url 'logout' %}">Logout</a></li>
+                            {% else %}
+                                <li><a href="{% url 'login' %}">Login</a></li>
+							    <li><a href="{% url 'new_user_registration' %}">Register</a></li>
+                            {% endif %}
+                        {% endif %}
 </body>
 </html>

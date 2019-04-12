@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- start banner Area -->
+	<section class="banner-area relative" id="home">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex text-center align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<p class="text-white link-nav"><a href="{% url 'home' %}">Home </a>
+						<span class="lnr lnr-arrow-right"></span> <a href="{% url 'property_view' %}">
+							Your Properties</a></p>
+					<h1 class="text-white">
+						Your Properties
+					</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+<br>
+
+	<!-- Start property Area -->
+	<section class="property-area section-gap relative" id="property">
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="col-md-10 header-text">
+					<h1>Your Properties</h1>
+					<p>
+						Properties Posted By You
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+                {% for items in property %}
+				<div class="col-lg-4">
+					<div class="single-property">
+						<div class="images">
+							<img class="img-fluid mx-auto d-block" src="{{items.main_image.url}}" alt="">
+                            <span>For Sale</span>
+						</div>
+
+						<div class="desc">
+							<div class="top d-flex justify-content-between">
+								<h4><a href="#">{{items.title}}</a></h4>
+								<h4>{{items.price}}</h4>
+							</div>
+							<div class="middle">
+								<div align="right" class="d-flex justify-content-start">
+									<p>Bed: {{items.bedroom}}</p>
+									<p>Bath: {{items.bathroom}}</p>
+								</div>
+								<div class="d-flex justify-content-start">
+									<p>Area: <span class="rd">{{items.sq_feet}}</span></p>
+									<p>Lot Size: <span class="rd">{{items.lot_size}}</span></p>
+									<p>Garage: <span class="rd">{{items.garage}}</span></p>
+								</div>
+							</div>
+                        </div>
+                        <div>
+							<div align="left" style="position : absolute;"><a type="submit" href="{% url 'property_details' pk=items.id %}">View Details</a></div>
+							<div align="right"><a type="submit" href="{% url 'property_update' pk=items.id %}">Update</a></div>
+						</div>
+					</div>
+                </div>
+                {% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End property Area -->
+{% endblock %}
