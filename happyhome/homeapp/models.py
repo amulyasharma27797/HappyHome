@@ -53,3 +53,12 @@ class Property(models.Model):
         return self.title
 
 
+class Enquiry(models.Model):
+    property = models.ForeignKey(Property, on_delete=models.CASCADE)
+    person = models.ForeignKey(UserDetails, on_delete=models.CASCADE)
+    description = models.TextField(max_length=200, blank=False)
+    date = models.DateField(auto_now_add=True, editable=False)
+
+    def __str__(self):
+        return self.property
+

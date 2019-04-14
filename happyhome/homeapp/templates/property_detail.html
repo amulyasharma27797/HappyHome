@@ -55,6 +55,15 @@
 								<p>Garage: {{properties.garage}}</p>
 								<p>Listing Date: {{properties.property_listing_date}}</p>
 								<p>Description: {{properties.description}}</p>
+
+								{% if not user.is_seller %}
+									<form method="POST" action="{% url 'enquiry' pid=properties.id %}">
+										{% csrf_token %}
+										<textarea name="Query"></textarea><br><br>
+										<input type="submit" value="Send Query">
+									</form>
+								{% endif %}
+
 							</div>
                 		</div>
 					</div>

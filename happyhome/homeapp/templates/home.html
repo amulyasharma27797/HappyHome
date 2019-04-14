@@ -10,7 +10,8 @@
 				<div class="banner-content col-lg-12 col-md-12">
 					<h1>We’re Real Estate King</h1>
 					<div class="search-field">
-						<form class="search-form" action="#">
+						<form class="search-form" action="{% url 'search' %}" method="POST">
+							{% csrf_token %}
 							<div class="row">
 								<div class="col-lg-12 d-flex align-items-center justify-content-center toggle-wrap">
 									<div class="row">
@@ -21,37 +22,35 @@
 									</div>
 								</div>
 								<div class="col-lg-3 col-md-6 col-xs-6">
-									<select name="location" class="app-select form-control" required>
-										<option data-display="Choose locations">Choose locations</option>
-										<option value="1">Dhaka</option>
-										<option value="2">Rangpur</option>
-										<option value="3">Bogra</option>
+									<text data-display="Enter Title">Title</text>
+									<input name="Title" class="app-select form-control">
+								</div>
+								<div class="col-lg-3 col-md-6 col-xs-6">
+									<text data-display="Enter City">City</text>
+									<select name="City" class="app-select form-control">
+										<option>Panaji</option>
+										<option>New Delhi</option>
+										<option>Faridabad</option>
+										<option>Chandigarh</option>
 									</select>
 								</div>
 								<div class="col-lg-3 col-md-6 col-xs-6">
-									<select name="property-type" class="app-select form-control" required>
-										<option data-display="Property Type">Property Type</option>
-										<option value="1">Property type 1</option>
-										<option value="2">Property type 2</option>
-										<option value="3">Property type 3</option>
+									<text data-display="Enter State">State</text>
+									<select name="State" class="app-select form-control">
+										<option>Goa</option>
+										<option>Delhi</option>
+										<option>Haryana</option>
+										<option>Punjab</option>
 									</select>
 								</div>
-								<div class="col-lg-3 col-md-6 col-xs-6">
-									<select name="bedroom" class="app-select form-control" required>
-										<option data-display="Bedrooms">Bedrooms</option>
-										<option value="1">One</option>
-										<option value="2">Two</option>
-										<option value="3">Three</option>
-									</select>
-								</div>
-								<div class="col-lg-3 col-md-6 col-xs-6">
-									<select name="bedroom" class="app-select form-control" required>
-										<option data-display="Bedrooms">Bedrooms</option>
-										<option value="1">One</option>
-										<option value="2">Two</option>
-										<option value="3">Three</option>
-									</select>
-								</div>
+<!--								<div class="col-lg-3 col-md-6 col-xs-6">-->
+<!--									<select name="bedroom" class="app-select form-control" required>-->
+<!--										<option data-display="Bedrooms">Bedrooms</option>-->
+<!--										<option value="1">One</option>-->
+<!--										<option value="2">Two</option>-->
+<!--										<option value="3">Three</option>-->
+<!--									</select>-->
+<!--								</div>-->
 <!--								<div class="col-lg-4 range-wrap">-->
 <!--									<p>Price Range($):</p>-->
 <!--									<input type="text" id="range" value="" name="range" />-->
@@ -60,10 +59,10 @@
 <!--									<p>Area Range(sqm):</p>-->
 <!--									<input type="text" id="range2" value="" name="range" />-->
 <!--								</div>-->
-<!--								<div class="col-lg-4 d-flex justify-content-end">-->
+								<div class="col-lg-4 d-flex justify-content-end">
 								<button class="primary-btn">Search Properties<span class="lnr lnr-arrow-right"></span></button>
 								</div>
-<!--							</div>-->
+							</div>
 						</form>
 					</div>
 				</div>
@@ -71,5 +70,47 @@
 		</div>
 	</section>
 	<!-- End banner Area -->
+	<section class="property-area section-gap relative" id="property">
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="col-md-10 header-text">
+					<hr style="border-width:5px; border-color:black;"><h1>Latest Properties</h1></hr>
+					<p>
+						From our top rated Sellers
+					</p>
+				</div>
+			</div>
 
+			<div class="row">
+                {% for items in properties %}
+				<div class="col-lg-4">
+					<div class="single-property">
+						<div class="images">
+							<img style="object-fit:cover;" class="mx-auto d-block" src="{{items.main_image.url}}" alt="" height="40%" width="50%">
+                            <span>For Sale</span>
+						</div>
+
+						<div class="desc">
+							<div class="top d-flex justify-content-between">
+								<h4><a href="#">{{items.title}}</a></h4>
+								<h4>{{items.price}}</h4>
+							</div>
+							<div class="middle">
+								<div align="right" class="d-flex justify-content-start">
+									<p>Bed: {{items.bedroom}}</p>
+									<p>Bath: {{items.bathroom}}</p>
+								</div>
+								<div class="d-flex justify-content-start">
+									<p>Area: <span class="rd">{{items.sq_feet}}</span></p>
+									<p>Lot Size: <span class="rd">{{items.lot_size}}</span></p>
+									<p>Garage: <span class="rd">{{items.garage}}</span></p>
+								</div>
+							</div>
+                        </div>
+					</div>
+                </div>
+                {% endfor %}
+				</div>
+		</div>
+	</section>
 {% endblock %}

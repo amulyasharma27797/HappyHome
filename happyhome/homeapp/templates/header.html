@@ -2,30 +2,12 @@
 <!--==========================
   Header
   ============================-->
-  <!-- Start Header Area -->
 	<header class="default-header">
 		<div class="menutop-wrap">
 			<div class="menu-top container">
 				<div class="d-flex justify-content-end align-items-center">
 					<ul class="list">
-						{% if user.is_authenticated %}
-							<li><a>{{user.phone}}</a></li>
-							<li><a href="{% url 'logout' %}">Logout</a></li>
-								{% if user.is_seller %}
-									<li><a href="{% url 'user_profile' %}">{{ user }} (Seller) </a></li>
-									<li><a href="{% url 'property_register' %}">Post Property</a></li>
-									<li><a href="{% url 'property_view' %}">View Property</a></li>
-								{% endif %}
-								{% if not user.is_seller %}
-									<li><a href="{% url 'user_profile' %}">{{ user }} (Buyer)</a></li>
-									<li><a href="{% url 'list_all_properties' %}">properties</a></li>
-								{% endif %}
-						{% endif %}
 
-						{% if not user.is_authenticated %}
-							<li><a href="{% url 'login' %}">Login</a></li>
-							<li><a href="{% url 'new_user_registration' %}">Register</a></li>
-						{% endif %}
 					</ul>
 				</div>
 			</div>
@@ -42,6 +24,23 @@
 					<nav id="nav-menu-container">
 						<ul class="nav-menu">
 							<li class="menu-active"><a href="{% url 'home' %}">home</a></li>
+							{% if user.is_authenticated %}
+							<li><a href="{% url 'logout' %}">Logout</a></li>
+								{% if user.is_seller %}
+									<li><a href="{% url 'user_profile' %}">{{ user }} (Seller) </a></li>
+									<li><a href="{% url 'property_register' %}">Post Property</a></li>
+									<li><a href="{% url 'property_view' %}">View Property</a></li>
+
+								{% else %}
+									<li><a href="{% url 'user_profile' %}">{{ user }} (Buyer)</a></li>
+									<li><a href="{% url 'list_all_properties' %}">properties</a></li>
+								{% endif %}
+							{% endif %}
+
+							{% if not user.is_authenticated %}
+								<li><a href="{% url 'login' %}">Login</a></li>
+								<li><a href="{% url 'new_user_registration' %}">Register</a></li>
+							{% endif %}
 							<li><a href="{% url 'about' %}">about</a></li>
 							<li><a href="{% url 'contact' %}">Contact</a></li>
 

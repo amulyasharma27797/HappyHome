@@ -1,6 +1,7 @@
 from django.urls import path
-from . import views
 from django.contrib.auth import views as auth_views
+from . import views
+
 
 urlpatterns = [
     # path('show/', views.show, name='show'),
@@ -14,6 +15,10 @@ urlpatterns = [
     path('property_list/', views.ListAllProperties.as_view(), name='list_all_properties'),
     path('property_details/<int:pk>/', views.ShowPropertyDetails.as_view(), name='property_details'),
     path('property_update/<int:pk>/', views.UpdateProperty.as_view(), name='property_update'),
+    path('property_delete/<int:pk>/', views.DeleteProperty.as_view(), name='property_delete'),
+    path('enquiry/<int:pid>/', views.make_enquiry, name='enquiry'),
+    # path('enquiries/', views.list_enquiries, name='list_enquiries'),
+    path('search/', views.search_property, name='search'),
     path('user/', views.user_detail, name='user_profile'),
     path('about/', views.About.as_view(), name='about'),
     path('contact/', views.Contact.as_view(), name='contact'),

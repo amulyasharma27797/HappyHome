@@ -30,7 +30,7 @@
 <!--===============================================================================================-->
 
 
-	<form method="POST" enctype="multipart/form-data" action="{% url 'property_view' %}">
+	<form method="POST" enctype="multipart/form-data">
 		{% csrf_token %}
 		<div class="container-contact100">
 			<div class="wrap-contact100">
@@ -44,7 +44,7 @@
 						{{form | crispy}}
 
 					<div class="container-contact100-form-btn">
-						<button class="contact100-form-btn">
+						<button class="contact100-form-btn" type="submit">
 							<span>
 								Update
 								<i class="zmdi zmdi-arrow-right m-l-8"></i>

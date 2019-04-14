@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.forms import ModelForm
 
-from .models import UserDetails
+from .models import UserDetails, Enquiry
 from .models import Property
 
 
@@ -35,3 +35,9 @@ class UpdateUser(ModelForm):
     class Meta:
         model = UserDetails
         fields = ['username', 'first_name', 'last_name', 'email_id', 'phone', 'description', 'photo']
+
+
+class EnquiryForm(ModelForm):
+    class Meta:
+        model = Enquiry
+        fields = ['description']

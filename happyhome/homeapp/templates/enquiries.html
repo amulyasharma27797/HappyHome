@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<!-- start banner Area -->
+	<section class="banner-area relative" id="home">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex text-center align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<p class="text-white link-nav"><a href="{% url 'home' %}">Home </a>
+						<span class="lnr lnr-arrow-right"></span> <a href="{% url 'list_enquiries' %}">
+							Your Enquiries</a></p>
+					<h1 class="text-white">
+						Your Enquiries
+					</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+<br>
+
+{% for enquiry in enquiries %}
+    {{enquiry.property.posted_by}}<br>
+    {{enquiry.id}}
+    {{enquiry.person}}
+
+    {{enquiry.description}}
+    {{enquiry.date}}
+{% endfor %}
+
+{% endblock %}

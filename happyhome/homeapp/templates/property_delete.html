@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<section class="banner-area relative" id="home">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex text-center align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<p class="text-white link-nav"><a href="{% url 'home' %}">Home </a>
+						<span class="lnr lnr-arrow-right"></span> <a href="{% url 'property_view' %}">
+							Delete Property</a></p>
+					<h1 class="text-white">
+						Delete Property
+					</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+<br>
+
+
+<form method="POST">
+    {% csrf_token %}
+    <p>Are you sure you want to delete this property???</p>
+    {{form|crispy}}
+    <button type="submit">Delete</button>
+</form>
+
+{% endblock %}
