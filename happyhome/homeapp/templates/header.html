@@ -29,11 +29,12 @@
 								{% if user.is_seller %}
 									<li><a href="{% url 'user_profile' %}">{{ user }} (Seller) </a></li>
 									<li><a href="{% url 'property_register' %}">Post Property</a></li>
-									<li><a href="{% url 'property_view' %}">View Property</a></li>
+									<li><a href="{% url 'property_view' %}">View My Property</a></li>
 
 								{% else %}
 									<li><a href="{% url 'user_profile' %}">{{ user }} (Buyer)</a></li>
 									<li><a href="{% url 'list_all_properties' %}">properties</a></li>
+									<li><a href="{% url 'list_enquiries' %}">enquiries</a></li>
 								{% endif %}
 							{% endif %}
 

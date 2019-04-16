@@ -46,7 +46,7 @@ class NewUserRegistration(FormView):
         return redirect('login')
 
     def form_invalid(self, form):
-        return redirect('new_user_registration')
+        return render(self.request, self.template_name, {'form': form, 'error': form.errors})
 
 
 @login_required
@@ -89,10 +89,11 @@ def property_view(request):
 
 # View Properties for all users
 class ListAllProperties(ListView):
-    model = Property
+    # model = Property
+    queryset = Property.objects.order_by('-id')
     template_name = 'Properties.html'
     context_object_name = 'properties'
-    paginate_by = 2
+    paginate_by = 3
 
 
 # Showing Properties Details
@@ -103,7 +104,11 @@ class ShowPropertyDetails(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ShowPropertyDetails, self).get_context_data(**kwargs)
-        context['user'] = UserDetails.objects.get(user=self.request.user)
+        if str(self.request.user) == 'AnonymousUser':
+            context['is_not_anonymous'] = False
+        else:
+            context['is_not_anonymous'] = True
+            context['user'] = UserDetails.objects.get(user=self.request.user)
         return context
 
 
@@ -133,20 +138,31 @@ class DeleteProperty(DeleteView):
         form.save()
         return redirect('property_view')
 
+    def get_context_data(self, **kwargs):
+        context = super(DeleteProperty, self).get_context_data(**kwargs)
+        context['user'] = UserDetails.objects.get(user=self.request.user)
+        return context
+
 
 def search_property(request):
     """Search Property"""
+    if not str(request.user) == 'AnonymousUser':
+        user = UserDetails.objects.get(user=request.user)
+    else:
+        user = ""
     if request.method == "POST":
 
         query_title = request.POST.get('Title')
         query_city = request.POST.get('City')
         query_state = request.POST.get('State')
 
-        result = Property.objects.filter(title__contains=query_title)
-        result.union(Property.objects.filter(city__exact=query_city))
-        result.union(Property.objects.filter(state__exact=query_state))
-
-        return render(request, 'Properties.html', context={'properties': result})
+        result = Property.objects.filter(title__contains=query_title, city__contains=query_city, state__contains=query_state)
+        result.union(Property.objects.filter(title__contains=query_title, city__contains=query_city, state__contains=query_state))
+        result.union(Property.objects.filter(title__contains=query_title, city__contains=query_city, state__contains=query_state))
+        context = {'properties': result, 'user': user}
+        if len(result) == 0:
+            context['no_result_found'] = True
+        return render(request, 'Properties.html', context)
 
 
 def make_enquiry(request, pid):
@@ -157,18 +173,16 @@ def make_enquiry(request, pid):
         enquiry.property = Property.objects.get(id=pid)
         enquiry.person = UserDetails.objects.get(username=request.user)
         enquiry.description = request.POST.get('Query')
-        # import pdb
-        # pdb.set_trace()
         EMAIL_ADDRESS = "amulya.sharma@tothenew.com"
         PASSWORD = "27071997Amulya"
-        seller_email = UserDetails.objects.get(id=pid).email_id
+        # seller_email = UserDetails.objects.get(id=pid).email_id
         # enquiry.save()
         server = smtplib.SMTP('smtp.gmail.com:587')
         server.ehlo()
         server.starttls()
         server.login(EMAIL_ADDRESS, PASSWORD)
         message = 'Subject: {}\n\n{}'.format(enquiry.property.title, enquiry.description)
-        server.sendmail(EMAIL_ADDRESS, 'aditya.arora@tothenew.com', message)
+        server.sendmail(EMAIL_ADDRESS, 'amulysharma27797@gmail.com', message)
         server.quit()
         return redirect('list_all_properties')
 
@@ -177,16 +191,16 @@ def make_enquiry(request, pid):
 
 
 # List All Enquiries Made
-# @login_required
-# def list_enquiries(request):
-#     user = UserDetails.objects.get(user=request.user)
-#     if request.method == "GET" and user.is_seller:
-#         try:
-#             enquiry = Enquiry.objects.filter(person=request.user)
-#             return render(request, 'enquiries.html', {'enquiries':enquiry, 'user':user})
-#
-#         except Enquiry.DoesNotExist:
-#             return HttpResponse("No Enquiry Made Till Now")
+@login_required
+def list_enquiries(request):
+    user = UserDetails.objects.get(user=request.user)
+    if request.method == "GET":
+        try:
+            enquiry = Enquiry.objects.filter(person=request.user)
+            return render(request, 'enquiries.html', {'enquiries': enquiry, 'user': user})
+
+        except Enquiry.DoesNotExist:
+            return HttpResponse("<h1>The current seller does not have any property</h1>")
 
 
 @login_required

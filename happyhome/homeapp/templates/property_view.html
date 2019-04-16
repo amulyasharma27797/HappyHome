@@ -38,7 +38,9 @@
 				<div class="col-lg-4">
 					<div class="single-property">
 						<div class="images">
-							<img class="img-fluid mx-auto d-block" src="{{items.main_image.url}}" alt="">
+						<img style="object-fit:cover;" class="mx-auto d-block" src="{{items.main_image.url}}" alt="" height="40%" width="50%">
+
+<!--							<img class="img-fluid mx-auto d-block" src="{{items.main_image.url}}" alt="">-->
                             <span>For Sale</span>
 						</div>
 
@@ -60,9 +62,33 @@
 							</div>
                         </div>
                         <div>
-							<div align="center"><a type="submit" href="{% url 'property_details' pk=items.id %}">View Details</a></div><br>
-							<div align="left" style="position:absolute;"><a type="submit" href="{% url 'property_update' pk=items.id %}">Update</a></div>
-							<div align="right"><a type="submit" href="{% url 'property_delete' pk=items.id %}">Delete</a></div>
+							<div align="center"><a style="background-color: #4CAF50;
+  															border: none;
+  															color: white;
+  															padding: 8px 15px;
+  															text-align: center;
+  															text-decoration: none;
+  															display: inline-block;
+  															font-size: 16px;"
+												   type="submit" href="{% url 'property_details' pk=items.id %}">View Details</a></div><br>
+							<div align="left" style="position:absolute;"><a style="background-color: #4CAF50;
+  																					border: none;
+  																					color: white;
+  																					padding: 8px 15px;
+    																				text-align: center;
+  																					text-decoration: none;
+  																					display: inline-block;
+  																					font-size: 16px;"
+																			type="submit" href="{% url 'property_update' pk=items.id %}">Update</a></div>
+							<div align="right"><a style="background-color: #4CAF50;
+  															border: none;
+  															color: white;
+  															padding: 8px 15px;
+  															text-align: center;
+  															text-decoration: none;
+  															display: inline-block;
+  															font-size: 16px;"
+												  type="submit" href="{% url 'property_delete' pk=items.id %}">Delete</a></div>
 						</div>
 					</div>
                 </div>

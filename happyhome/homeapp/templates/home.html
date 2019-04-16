@@ -9,7 +9,7 @@
 			<div class="row fullscreen align-items-end justify-content-center">
 				<div class="banner-content col-lg-12 col-md-12">
 					<h1>We’re Real Estate King</h1>
-					<div class="search-field">
+					<div style="border-style:solid; border-width:5px; color:#820000" class="search-field">
 						<form class="search-form" action="{% url 'search' %}" method="POST">
 							{% csrf_token %}
 							<div class="row">
@@ -21,7 +21,7 @@
 
 									</div>
 								</div>
-								<div class="col-lg-3 col-md-6 col-xs-6">
+								<div align="center" class="col-md-6 col-xs-6">
 									<text data-display="Enter Title">Title</text>
 									<input name="Title" class="app-select form-control">
 								</div>
@@ -59,10 +59,11 @@
 <!--									<p>Area Range(sqm):</p>-->
 <!--									<input type="text" id="range2" value="" name="range" />-->
 <!--								</div>-->
-								<div class="col-lg-4 d-flex justify-content-end">
+
+							</div>
+							<div align="center" class="justify-content-end">
 								<button class="primary-btn">Search Properties<span class="lnr lnr-arrow-right"></span></button>
 								</div>
-							</div>
 						</form>
 					</div>
 				</div>
@@ -76,7 +77,6 @@
 				<div class="col-md-10 header-text">
 					<hr style="border-width:5px; border-color:black;"><h1>Latest Properties</h1></hr>
 					<p>
-						From our top rated Sellers
 					</p>
 				</div>
 			</div>
@@ -105,6 +105,15 @@
 									<p>Lot Size: <span class="rd">{{items.lot_size}}</span></p>
 									<p>Garage: <span class="rd">{{items.garage}}</span></p>
 								</div>
+		                        <div align="right"><a style="background-color: #4CAF50;
+  																border: none;
+  																color: white;
+  																padding: 10px 25px;
+  																text-align: center;
+  																text-decoration: none;
+  																display: inline-block;
+  																font-size: 16px;"
+													  type="submit" href="{% url 'property_details' pk=items.id %}">View Details</a></div>
 							</div>
                         </div>
 					</div>

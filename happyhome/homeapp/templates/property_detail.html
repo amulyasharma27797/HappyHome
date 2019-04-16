@@ -3,6 +3,7 @@
 
 {% block content %}
 
+
 <!-- start banner Area -->
 	<section class="banner-area relative" id="home">
 		<div class="overlay overlay-bg"></div>
@@ -40,9 +41,38 @@
 						<div class="images">
 							<img class="img-fluid mx-auto d-block" src="{{properties.main_image.url}}" alt="">
 <!--                            <span>For Sale</span>-->
+
+  							</div>
+<!--						<hr color="black">-->
+<!--						<div style="color:brown;">-->
+<!--								<h4 align="center">{{properties.title}}</a></h4>-->
+<!--								<h4 align="center">₹ {{properties.price}}</h4>-->
+<!--								<hr color="black">-->
+<!--							<br>-->
+<!--								<p>Posted By: {{properties.posted_by}}</p>-->
+<!--								<p>Address: {{properties.address}}</p>-->
+<!--								<p>City: {{properties.city}}</p>-->
+<!--								<p>State: {{properties.state}}</p>-->
+<!--								<p>Pin: {{properties.pin}}</p>-->
+<!--								<p>Bedroom: {{properties.bedroom}}</p>-->
+<!--								<p>Bathroom: {{properties.bathroom}}</p>-->
+<!--								<p>Square Feet: {{properties.sq_feet}}</p>-->
+<!--								<p>Lot Size: {{properties.lot_size}}</p>-->
+<!--								<p>Garage: {{properties.garage}}</p>-->
+<!--								<p>Listing Date: {{properties.property_listing_date}}</p>-->
+<!--								<p>Description: {{properties.description}}</p>-->
+<!--						</div>-->
+
+
 							</div>
-								<h4>{{properties.title}}</a></h4>
-								<h4>{{properties.price}}</h4><br>
+                		</div>
+
+				<div style="color:brown; display:">
+					<hr color="black">
+								<h4 align="center">{{properties.title}}</a></h4>
+								<h4 align="center">₹ {{properties.price}}</h4>
+								<hr color="black">
+							<br>
 								<p>Posted By: {{properties.posted_by}}</p>
 								<p>Address: {{properties.address}}</p>
 								<p>City: {{properties.city}}</p>
@@ -55,17 +85,24 @@
 								<p>Garage: {{properties.garage}}</p>
 								<p>Listing Date: {{properties.property_listing_date}}</p>
 								<p>Description: {{properties.description}}</p>
-
+					{% if is_not_anonymous %}
 								{% if not user.is_seller %}
 									<form method="POST" action="{% url 'enquiry' pid=properties.id %}">
 										{% csrf_token %}
 										<textarea name="Query"></textarea><br><br>
-										<input type="submit" value="Send Query">
+										<input style="background-color: #4CAF50;
+  														border: none;
+  														color: white;
+  														padding: 10px 25px;
+  														text-align: center;
+  														text-decoration: none;
+  														display: inline-block;
+  														font-size: 16px;"
+											   type="submit" value="Send Query">
 									</form>
 								{% endif %}
-
-							</div>
-                		</div>
+							{% endif %}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -74,3 +111,5 @@
 
 
 {% endblock %}
+
+

@@ -23,13 +23,32 @@
 	<!-- End banner Area -->
 <br>
 
-{% for enquiry in enquiries %}
-    {{enquiry.property.posted_by}}<br>
-    {{enquiry.id}}
-    {{enquiry.person}}
+<section class="about-area">
+		<div class="container-fluid" align="center">
+            <table border="2px" align="center   ">
+                <thead>
+					<td>Enquiry ID</td>
+                    <td>Property</td>
+                    <td>Description</td>
+					<td>Seller</td>
+                    <td>Enquiry Date</td>
+                </thead>
+				{% for enquiry in enquiries %}
+                <tr>
 
-    {{enquiry.description}}
-    {{enquiry.date}}
-{% endfor %}
+					<td>{{enquiry.id}}</td>
+                    <td>{{enquiry.property}}</td>
+                    <td>{{enquiry.description}}</td>
+					<td>{{enquiry.property.posted_by}}</td>
+                    <td>{{enquiry.date}}</td>
+
+                </tr>
+				{% endfor %}
+            </table>
+            <br>
+        </div>
+	</section>
+
+
 
 {% endblock %}
