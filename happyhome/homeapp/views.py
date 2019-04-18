@@ -7,7 +7,8 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 
-from django.views.generic import FormView, DeleteView
+from django.views.generic import FormView
+from django.views.generic import DeleteView
 from django.views.generic import TemplateView
 from django.views.generic import ListView
 from django.views.generic import DetailView
@@ -176,7 +177,7 @@ def make_enquiry(request, pid):
         enquiry.person = UserDetails.objects.get(username=request.user)
         enquiry.description = request.POST.get('Query')
         EMAIL_ADDRESS = "amulya.sharma@tothenew.com"
-        PASSWORD = "27071997Amulya"
+        PASSWORD = "************"
         # seller_email = UserDetails.objects.get(id=pid).email_id
         # enquiry.save()
         server = smtplib.SMTP('smtp.gmail.com:587')
