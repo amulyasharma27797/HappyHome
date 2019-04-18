@@ -2,7 +2,24 @@
 {% load static %}
 
 {% block content %}
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
+    <link rel="stylesheet" href="{% static 'prop_details/fonts/icomoon/style.css' %}">
 
+    <link rel="stylesheet" href="{% static 'prop_details/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'prop_details/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'prop_details/css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'prop_details/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'prop_details/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'prop_details/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'prop_details/css/mediaelementplayer.css' %}">
+    <link rel="stylesheet" href="{% static 'prop_details/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'prop_details/fonts/flaticon/font/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'prop_details/css/fl-bigmug-line.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'prop_details/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'prop_details/css/style.css' %}">
 
 <!-- start banner Area -->
 	<section class="banner-area relative" id="home">
@@ -24,69 +41,114 @@
 <br>
 
 	<!-- Start property Area -->
-	<section class="property-area section-gap relative" id="property">
 		<div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="col-md-10 header-text">
-					<h1>Details of Current Property</h1>
-					<p>
-                        <!---->
-					</p>
+					<h1><span class="d-inline-block px-3 mb-3 property-offer-type rounded">Property Details of</span></h1>
+					<h3 style="color:black;" class="mb-2"><u>{{properties.title}}</u></h3>
 				</div>
 			</div>
 <br>
-			<div class="row">
-				<div class="col-lg-4">
-					<div class="single-property">
-						<div class="images">
-							<img class="img-fluid mx-auto d-block" src="{{properties.main_image.url}}" alt="">
-<!--                            <span>For Sale</span>-->
-
-  							</div>
-<!--						<hr color="black">-->
-<!--						<div style="color:brown;">-->
-<!--								<h4 align="center">{{properties.title}}</a></h4>-->
-<!--								<h4 align="center">₹ {{properties.price}}</h4>-->
-<!--								<hr color="black">-->
-<!--							<br>-->
-<!--								<p>Posted By: {{properties.posted_by}}</p>-->
-<!--								<p>Address: {{properties.address}}</p>-->
-<!--								<p>City: {{properties.city}}</p>-->
-<!--								<p>State: {{properties.state}}</p>-->
-<!--								<p>Pin: {{properties.pin}}</p>-->
-<!--								<p>Bedroom: {{properties.bedroom}}</p>-->
-<!--								<p>Bathroom: {{properties.bathroom}}</p>-->
-<!--								<p>Square Feet: {{properties.sq_feet}}</p>-->
-<!--								<p>Lot Size: {{properties.lot_size}}</p>-->
-<!--								<p>Garage: {{properties.garage}}</p>-->
-<!--								<p>Listing Date: {{properties.property_listing_date}}</p>-->
-<!--								<p>Description: {{properties.description}}</p>-->
-<!--						</div>-->
 
 
-							</div>
-                		</div>
+    <div class="site-section site-section-sm">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8" style="margin-top: -150px;">
+            <div class="mb-5">
+              <div class="slide-one-item home-slider owl-carousel">
+                <div><img src="{{properties.main_image.url}}" alt="" class="img-fluid"></div>
+<!--                <div><img src="{{properties.photo1}}" alt="" class="img-fluid"></div>-->
+<!--                <div><img src="{{properties.photo2}}" alt="" class="img-fluid"></div>-->
+              </div>
+            </div>
+            <div class="bg-white">
+              <div class="row mb-5">
+                <div class="col-md-6">
+                  <strong class="text-success h1 mb-3">₹ {{properties.price}}</strong>
+                </div>
+                <div class="col-md-6">
+                  <ul class="property-specs-wrap mb-3 mb-lg-0  float-lg-right">
+                  <li>
+                    <span class="property-specs">Beds</span>
+                    <span class="property-specs-number">{{properties.bedroom}}</span>
 
-				<div style="color:brown; display:">
-					<hr color="black">
-								<h4 align="center">{{properties.title}}</a></h4>
-								<h4 align="center">₹ {{properties.price}}</h4>
-								<hr color="black">
-							<br>
-								<p>Posted By: {{properties.posted_by}}</p>
-								<p>Address: {{properties.address}}</p>
-								<p>City: {{properties.city}}</p>
-								<p>State: {{properties.state}}</p>
-								<p>Pin: {{properties.pin}}</p>
-								<p>Bedroom: {{properties.bedroom}}</p>
-								<p>Bathroom: {{properties.bathroom}}</p>
-								<p>Square Feet: {{properties.sq_feet}}</p>
-								<p>Lot Size: {{properties.lot_size}}</p>
-								<p>Garage: {{properties.garage}}</p>
-								<p>Listing Date: {{properties.property_listing_date}}</p>
-								<p>Description: {{properties.description}}</p>
+                  </li>
+                  <li>
+                    <span class="property-specs">Baths</span>
+                    <span class="property-specs-number">{{properties.bathroom}}</span>
+
+                  </li>
+                  <li>
+                    <span class="property-specs">SQ FT</span>
+                    <span class="property-specs-number">{{properties.sq_feet}}</span>
+
+                </ul>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                  <span class="d-inline-block text-black mb-0 caption-text">Title</span>
+                  <strong class="d-block">{{properties.title}}</strong>
+                </div>
+                <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                  <span class="d-inline-block text-black mb-0 caption-text">Posted By</span>
+                  <strong class="d-block">{{properties.posted_by}}</strong>
+                </div>
+                <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                  <span class="d-inline-block text-black mb-0 caption-text">Address</span>
+                  <strong class="d-block">{{properties.address}}</strong>
+                </div>
+
+              </div>
+				<div class="row mb-5">
+                <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                  <span class="d-inline-block text-black mb-0 caption-text">City</span>
+                  <strong class="d-block">{{properties.city}}</strong>
+                </div>
+                <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                  <span class="d-inline-block text-black mb-0 caption-text">State</span>
+                  <strong class="d-block">{{properties.state}}</strong>
+                </div>
+                <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                  <span class="d-inline-block text-black mb-0 caption-text">Pin</span>
+                  <strong class="d-block">{{properties.pin}}</strong>
+                </div>
+              </div>
+
+				</div>
+				<div class="row mb-5">
+                <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                  <span class="d-inline-block text-black mb-0 caption-text">Lot Size</span>
+                  <strong class="d-block">{{properties.lot_size}}</strong>
+                </div>
+                <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                  <span class="d-inline-block text-black mb-0 caption-text">Garage</span>
+                  <strong class="d-block">{{properties.garage}}</strong>
+                </div>
+                <div class="col-md-6 col-lg-4 text-left border-bottom border-top py-3">
+                  <span class="d-inline-block text-black mb-0 caption-text">Listing Date</span>
+                  <strong class="d-block">{{properties.property_listing_date}}</strong>
+                </div>
+              </div>
+
+			  <h2 class="h4 text-black">More Info</h2>
+				<p>{{properties.description}}</p>
+
+				{% if is_not_anonymous %}
+									{% if user.is_seller %}
+										{% for enquiry in enquiries %}
+											<br><hr><h3 align="center" style="color:black;">Enquiries Made</h3><hr>
+											<p>Buyer : {{enquiry.person}}</p>
+											<p>Enquiry : {{enquiry.description}}</p>
+											<p>Date : {{enquiry.date}}</p>
+										{% endfor %}
+									{% endif %}
+								{% endif %}
+
 					{% if is_not_anonymous %}
 								{% if not user.is_seller %}
+			  						<hr width="102%" align="left"><h5 style="color:black;">Do you have any queries for seller?</h5>
 									<form method="POST" action="{% url 'enquiry' pid=properties.id %}">
 										{% csrf_token %}
 										<textarea name="Query"></textarea><br><br>
@@ -102,12 +164,28 @@
 									</form>
 								{% endif %}
 							{% endif %}
-						</div>
-					</div>
-				</div>
-			</div>
-	</section>
+</div>
+
+		  </div>
+		</div>
+	  </div>
+	</div>
 	<!-- End property Area -->
+
+  <script src="{% static 'prop_details/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'prop_details/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'prop_details/js/jquery-ui.js' %}"></script>
+  <script src="{% static 'prop_details/js/popper.min.js' %}"></script>
+  <script src="{% static 'prop_details/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'prop_details/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'prop_details/js/mediaelement-and-player.min.js' %}"></script>
+  <script src="{% static 'prop_details/js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'prop_details/js/jquery.countdown.min.js' %}"></script>
+  <script src="{% static 'prop_details/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'prop_details/js/bootstrap-datepicker.min.js' %}"></script>
+  <script src="{% static 'prop_details/js/aos.js' %}"></script>
+
+  <script src="{% static 'prop_details/js/main.js' %}"></script>
 
 
 {% endblock %}

@@ -11,6 +11,9 @@ class UserDetails(User):
     description = models.TextField(max_length=200, blank=True)
     photo = models.ImageField(upload_to='images/', default='images/profile-default-lrg.png')
 
+    def __str(self):
+        return self.user
+
 
 PROPERTY_CITY_CHOICES = (
         ('panaji', 'Panaji'),

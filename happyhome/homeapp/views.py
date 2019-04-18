@@ -30,10 +30,12 @@ def home(request):
     if request.user.is_authenticated:
         user = UserDetails.objects.get(user=request.user)
         list_latest_property = Property.objects.filter().order_by('-property_listing_date')[:3]
-        return render(request, 'home.html', {'properties': list_latest_property, 'user': user})
+        title = Property.objects.filter().order_by('-title')
+        return render(request, 'home.html', {'properties': list_latest_property, 'user': user, 'title': title})
     else:
         list_latest_property = Property.objects.filter().order_by('-property_listing_date')[:3]
-        return render(request, 'home.html', {'properties': list_latest_property})
+        title = Property.objects.filter().order_by('-title')
+        return render(request, 'home.html', {'properties': list_latest_property, 'title': title})
 
 
 # Registering a new user
@@ -109,6 +111,7 @@ class ShowPropertyDetails(DetailView):
         else:
             context['is_not_anonymous'] = True
             context['user'] = UserDetails.objects.get(user=self.request.user)
+            context['enquiries'] = Enquiry.objects.filter(property=Property.objects.get(id=self.kwargs['pk']))
         return context
 
 
@@ -157,7 +160,6 @@ def search_property(request):
         query_state = request.POST.get('State')
 
         result = Property.objects.filter(title__contains=query_title, city__contains=query_city, state__contains=query_state)
-        result.union(Property.objects.filter(title__contains=query_title, city__contains=query_city, state__contains=query_state))
         result.union(Property.objects.filter(title__contains=query_title, city__contains=query_city, state__contains=query_state))
         context = {'properties': result, 'user': user}
         if len(result) == 0:
@@ -227,7 +229,11 @@ class About(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(About, self).get_context_data(**kwargs)
-        context['user'] = UserDetails.objects.get(user=self.request.user)
+        if str(self.request.user) == 'AnonymousUser':
+            context['is_not_anonymous'] = False
+        else:
+            context['is_not_anonymous'] = True
+            context['user'] = UserDetails.objects.get(user=self.request.user)
         return context
 
 
@@ -237,7 +243,11 @@ class Contact(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(Contact, self).get_context_data(**kwargs)
-        context['user'] = UserDetails.objects.get(user=self.request.user)
+        if str(self.request.user) == 'AnonymousUser':
+            context['is_not_anonymous'] = False
+        else:
+            context['is_not_anonymous'] = True
+            context['user'] = UserDetails.objects.get(user=self.request.user)
         return context
 
 
