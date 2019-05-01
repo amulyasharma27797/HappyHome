@@ -126,6 +126,15 @@ class UpdateProperty(UpdateView):
               'photo4', 'photo5', 'photo6', ]
     template_name = 'property_update.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(UpdateProperty, self).get_context_data(**kwargs)
+        if str(self.request.user) == 'AnonymousUser':
+            context['is_not_anonymous'] = False
+        else:
+            context['is_not_anonymous'] = True
+            context['user'] = UserDetails.objects.get(user=self.request.user)
+        return context
+
     def form_valid(self, form):
         form.save()
         return redirect('property_view')
@@ -176,8 +185,8 @@ def make_enquiry(request, pid):
         enquiry.property = Property.objects.get(id=pid)
         enquiry.person = UserDetails.objects.get(username=request.user)
         enquiry.description = request.POST.get('Query')
-        EMAIL_ADDRESS = "amulya.sharma@tothenew.com"
-        PASSWORD = "************"
+        EMAIL_ADDRESS = "abc@gmail.com"
+        PASSWORD = "**************"
         # seller_email = UserDetails.objects.get(id=pid).email_id
         # enquiry.save()
         server = smtplib.SMTP('smtp.gmail.com:587')
@@ -185,7 +194,7 @@ def make_enquiry(request, pid):
         server.starttls()
         server.login(EMAIL_ADDRESS, PASSWORD)
         message = 'Subject: {}\n\n{}'.format(enquiry.property.title, enquiry.description)
-        server.sendmail(EMAIL_ADDRESS, 'amulysharma27797@gmail.com', message)
+        server.sendmail(EMAIL_ADDRESS, 'xyz@gmail.com', message)
         server.quit()
         return redirect('list_all_properties')
 
